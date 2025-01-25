@@ -7,9 +7,11 @@ WORKDIR /sandbox
 # 拷贝运行文件到容器
 COPY run_code.py /sandbox/run_code.py
 COPY app.py /sandbox/app.py
+COPY requirements.txt /sandbox/requirements.txt
 
 # 安装必要的依赖
 RUN pip install --no-cache-dir --upgrade pip
+RUN pip install --no-cache-dir -r /sandbox/requirements.txt
 
 # 默认命令
 CMD ["python3", "app.py"]
